@@ -14,7 +14,7 @@
 <footer class="wc-footer">
 	<div class="wc-footer-top">
 		<div class="wc-footer-col1">
-			<?php the_custom_logo(); ?>
+			<img src="<?= get_stylesheet_directory_uri()?>/assets/img/logo_drogal_footer.png" alt="logo drogal" />
 
 			<span>Siga nossas redes sociais</span>
 			<div class="wc-footer-redes">
@@ -96,7 +96,7 @@
 			</div>
 		</div>
 
-		<div class="wc-footer-col2">
+		<div class="wc-footer-col2 wc-footer-col-links">
 			<span>Institucional</span>
 			<nav class="wc-footer-col-nav">
 				<?php
@@ -110,7 +110,7 @@
 			</nav>
 		</div>
 
-		<div class="wc-footer-col3">
+		<div class="wc-footer-col3 wc-footer-col-links">
 			<span>Serviços e benefícios</span>
 			<nav class="wc-footer-col-nav">
 				<?php
@@ -124,7 +124,7 @@
 			</nav>
 		</div>
 
-		<div class="wc-footer-col4">
+		<div class="wc-footer-col4 wc-footer-col-links">
 			<span>Central de Atendimento</span>
 			<nav class="wc-footer-col-nav">
 				<?php
