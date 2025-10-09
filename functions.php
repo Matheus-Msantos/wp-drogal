@@ -50,6 +50,11 @@ function _s_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', '_s' ),
+			'menu-2' => esc_html__( 'Menu mobile navegação', '_s' ),
+			'menu-3' => esc_html__( 'Menu mobile categoria', '_s' ),
+			'menu-4' => esc_html__( 'Menu footer Institucional', '_s' ),
+			'menu-5' => esc_html__( 'Menu footer Serviços e benefícios', '_s' ),
+			'menu-6' => esc_html__( 'Menu mobile Central de Atendimento', '_s' ),
 		)
 	);
 
@@ -182,3 +187,19 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+function _s_widgets_init_search() {
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Busca', '_s' ),
+			'id'            => 'busca',
+			'description'   => esc_html__( 'Add widgets here.', '_s' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	
+}
+add_action( 'widgets_init', '_s_widgets_init_search' );
