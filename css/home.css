@@ -1,0 +1,231 @@
+.wc-home__conteiner {
+  width: 68%;
+  background-color: #fff;
+  border-radius: 54px;
+  box-shadow: 0px -5px 4.4px 1px #3232320A;
+  padding: 23px 35px;
+  margin: -120px auto 0 auto;
+  z-index: 2;
+  position: relative;
+}
+
+/*--- Banner Principal ---*/
+.wc-home-banner-main {
+  width: 100%;
+}
+
+.wc-home-banner-main__desk {
+  width: 100%;
+  display: block;
+}
+
+.wc-home-banner-main__mob {
+  display: none;
+  width: 100%;
+}
+
+/*--- Banner Principal ---*/
+
+/*--- Post lestest ---*/
+.wc-home-post-lestest {}
+
+.wc-home-post-lestest__title,
+.wc-home-category h2,
+.wc-home-highlights h2,
+.wc-category-item__title {
+  color: #5A707F;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 13px;
+}
+
+.wc-home-post-lestest__item--featured {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 381px;
+  display: flex !important;
+  align-items: flex-end;
+}
+
+.wc-home-post-lestest__overlay {
+  background: rgba(217, 217, 217, .6);
+  padding: 18px 31px;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+
+}
+
+.wc-home-post-lestest__overlay .wc-home-post-lestest__title-post {
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.wc-home-post-lestest__overlay .wc-home-post-lestest__excerpt {
+  font-family: "Inter", sans-serif;
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 13px;
+}
+
+.wc-home-post-lestest__flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wc-home-post-lestest__flex-date {
+  display: flex;
+  align-items: center;
+  gap: 22px
+}
+
+.wc-home-post-lestest__store {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wc-home-post-lestest__store-name,
+.wc-home-post-lestest__overlay .wc-home-post-lestest__date {
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.wc-home-post-lestest__overlay .wc-home-post-lestest__date {
+  text-transform: capitalize;
+  position: relative;
+}
+
+.wc-home-post-lestest__overlay .wc-home-post-lestest__date::before {
+  content: "";
+  background-color: #BF1818;
+  width: 8px;
+  height: 8px;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  left: -14px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.wc-home-post-lestest__overlay .wc-home-post-lestest__cat {
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  padding: 3px 37px;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.wc-home-post-lestest__row {
+  display: flex;
+  gap: 37px;
+  align-items: center;
+  margin-top: 29px;
+}
+
+/*--- Post lestest ---*/
+
+/*--- Home category ---*/
+.wc-home-category {
+  margin-top: 46px;
+}
+
+.wc-category-list {
+  margin: 0;
+  list-style: none;
+}
+
+.wc-category-item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wc-category-item a span {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  color: #5A5A5A;
+}
+
+/*--- Home category ---*/
+
+/*--- highlights ---*/
+.wc-home-highlights {
+  margin-top: 46px;
+}
+
+.wc-home-highlights__banner-big {
+  display: block;
+  width: 100%;
+}
+
+.wc-home-highlights__flex {
+  display: flex;
+  gap: 13px;
+  justify-content: center;
+}
+
+.wc-home-highlights__banner-small {
+  display: block;
+  width: 50%;
+}
+
+/*--- highlights ---*/
+
+/*--- Post ---*/
+.wc-category-item {
+  margin-top: 46px;
+}
+
+/*--- Post ---*/
+
+@media(max-width: 1000px) {
+
+  .wc-home__conteiner {
+    width: 100%;
+    margin-top: -76px;
+    border-radius: 30px;
+    padding: 23px 21px;
+  }
+
+  .wc-home-post-lestest__title,
+  .wc-home-category h2,
+  .wc-home-highlights h2,
+  .wc-category-item__title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  /*--- Banner Principal ---*/
+  .wc-home-banner-main__desk {
+    display: none;
+  }
+
+  .wc-home-banner-main__mob {
+    display: block;
+  }
+
+  /*--- Banner Principal ---*/
+
+  /*--- Banner Highlights ---*/
+  .wc-home-highlights__banner-big {
+    display: none;
+  }
+  /*--- Banner Highlights ---*/
+
+
+
+
+}

@@ -203,3 +203,66 @@ function _s_widgets_init_search() {
 	
 }
 add_action( 'widgets_init', '_s_widgets_init_search' );
+
+// === REGISTRA O MENU LATERAL E O POST TYPE ===
+function wc_register_carrossel_de_categorias_cpt() {
+
+    $labels = array(
+        'name'               => 'Carrossel de Categorias',
+        'singular_name'      => 'Categoria do Carrossel',
+        'menu_name'          => 'Carrossel de Categorias',
+        'name_admin_bar'     => 'Carrossel de Categorias',
+        'add_new'            => 'Adicionar Nova',
+        'add_new_item'       => 'Adicionar Nova Categoria',
+        'new_item'           => 'Nova Categoria',
+        'edit_item'          => 'Editar Categoria',
+        'view_item'          => 'Ver Categoria',
+        'all_items'          => 'Todas as Categorias',
+        'search_items'       => 'Buscar Categorias',
+        'not_found'          => 'Nenhuma categoria encontrada.',
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => false,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'menu_icon'          => 'dashicons-images-alt2',
+        'supports'           => array('title', 'thumbnail'),
+        'has_archive'        => false,
+        'rewrite'            => false,
+    );
+
+    register_post_type('carrossel_categoria', $args);
+}
+add_action('init', 'wc_register_carrossel_de_categorias_cpt');
+
+// Adiciona campo de link no editor do CPT
+function wc_add_carrossel_categoria_meta_box() {
+    add_meta_box(
+        'wc_carrossel_categoria_link',
+        'Link de Redirecionamento',
+        'wc_carrossel_categoria_link_callback',
+        'carrossel_categoria',
+        'normal',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'wc_add_carrossel_categoria_meta_box');
+
+function wc_carrossel_categoria_link_callback($post) {
+    $link = get_post_meta($post->ID, '_wc_categoria_link', true);
+    echo '<label for="wc_categoria_link">URL do link:</label>';
+    echo '<input type="url" id="wc_categoria_link" name="wc_categoria_link" value="' . esc_attr($link) . '" style="width:100%;max-width:600px;" placeholder="https://...">';
+}
+
+// Salva o campo personalizado
+function wc_save_carrossel_categoria_link($post_id) {
+    if (array_key_exists('wc_categoria_link', $_POST)) {
+        update_post_meta($post_id, '_wc_categoria_link', sanitize_text_field($_POST['wc_categoria_link']));
+    }
+}
+add_action('save_post', 'wc_save_carrossel_categoria_link');
+
+
+
