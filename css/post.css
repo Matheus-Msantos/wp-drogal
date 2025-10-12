@@ -1,0 +1,251 @@
+article.post {
+  width: 100%;
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.wc-single-title {
+  color: #5A707F;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.wc-single-post-meta {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.wc-single-post-date {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.wc-single__store {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.wc-single__store-name {
+  margin-bottom: 0;
+  color: #5A707F;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.wc-single-date {
+  margin-bottom: 0;
+  color: #5A707F;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.wc-single-date::before {
+  content: "";
+  background-color: #1F95E3;
+  width: 8px;
+  height: 8px;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  left: -14px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.wc-single-post-category {
+  border: 2px solid #1F95E3;
+  border-radius: 40px;
+  width: 134px;
+  height: 37px;
+  display: block;
+  color: #1F95E3;
+  font-size: 18px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  line-height: 37px;
+}
+
+.post-thumbnail {
+  margin-top: 34px;
+  width: 100%;
+  display: block;
+}
+
+.wc-single-content p {
+  font-size: 18px;
+  line-height: 40px;
+
+}
+
+.wc-single-content h2 {
+  font-size: 24px;
+  color: #5A707F;
+  margin-bottom: 28px;
+
+}
+
+.wc-single-content .wp-block-list {
+  margin-left: 27px;
+}
+
+.wc-single-content .wp-block-list li {
+  font-size: 24px;
+  font-weight: 700;
+  color: #5A707F;
+
+}
+
+.comments-area {
+  width: 100%;
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.comments-title {
+  color: #5A707F;
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 50px;
+}
+
+.comment-reply-title,
+.required-field-message,
+.logged-in-as {
+  display: none;
+}
+
+.comment-form-comment label {
+  font-size: 0;
+}
+
+.comment-form-comment label::before {
+  font-size: 15px;
+  color: #142E1B66;
+  display: block;
+  content: "Adicione um comentário";
+}
+
+.comment-form-comment textarea {
+  border: 1px solid #00000000;
+  background-color: #BBBBBB17;
+  border-radius: 16px;
+  height: 153px;
+  padding: 8px 12px;
+}
+
+.form-submit .submit {
+  background-color: #3792FD;
+  border-radius: 40px;
+  height: 37px;
+  padding: 0 10px;
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.comment-list {
+  margin: 52px 0 0 0;
+}
+
+.comment-author {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.comment-author .avatar {
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+
+.comment-author b a {
+  color: #5A707F;
+  font-size: 18px;
+  display: block;
+}
+
+.comment-date {
+  font-size: 13px;
+  font-weight: 300;
+  color: #141F2E9E;
+}
+
+.comment-content {
+  color: #4D4D4D;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 12px 0;
+}
+
+.wc-comment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.wc-comment-like,
+.wc-comment-deslike {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wc-like-btn {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: url('data:image/svg+xml, <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 21.418V10.418M1 12.418V19.418C1 20.5225 1.89543 21.418 3 21.418H16.4262C17.907 21.418 19.1662 20.3376 19.3914 18.8741L20.4683 11.8741C20.7479 10.0569 19.3418 8.41797 17.5032 8.41797H14C13.4477 8.41797 13 7.97025 13 7.41797V3.88381C13 2.52196 11.896 1.41797 10.5342 1.41797C10.2093 1.41797 9.91498 1.60926 9.78306 1.90609L6.26394 9.82411C6.10344 10.1852 5.74532 10.418 5.35013 10.418H3C1.89543 10.418 1 11.3134 1 12.418Z" stroke="%231B281E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>') no-repeat center;
+  background-size: 24px;
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  display: block;
+}
+
+.wc-deslike-btn {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: url('data:image/svg+xml,<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.0206 2.59961V13.5996M22.0206 10.3996V5.79961C22.0206 4.6795 22.0206 4.11945 21.8026 3.69163C21.6108 3.3153 21.3049 3.00934 20.9285 2.8176C20.5007 2.59961 19.9407 2.59961 18.8206 2.59961H8.13857C6.67709 2.59961 5.94635 2.59961 5.35614 2.86704C4.83596 3.10275 4.39386 3.48203 4.0818 3.96032C3.72773 4.503 3.61662 5.22525 3.39439 6.66973L2.87131 10.0697C2.5782 11.9749 2.43165 12.9275 2.71436 13.6687C2.9625 14.3193 3.42921 14.8633 4.03448 15.2075C4.72409 15.5996 5.68789 15.5996 7.6155 15.5996H8.42056C8.98061 15.5996 9.26064 15.5996 9.47455 15.7086C9.66271 15.8045 9.81569 15.9575 9.91157 16.1456C10.0206 16.3595 10.0206 16.6396 10.0206 17.1996V20.1338C10.0206 21.4956 11.1246 22.5996 12.4864 22.5996C12.8112 22.5996 13.1056 22.4083 13.2375 22.1115L16.5983 14.5498C16.7511 14.2059 16.8275 14.0339 16.9484 13.9078C17.0551 13.7963 17.1863 13.7111 17.3315 13.6588C17.4958 13.5996 17.684 13.5996 18.0604 13.5996H18.8206C19.9407 13.5996 20.5007 13.5996 20.9285 13.3816C21.3049 13.1899 21.6108 12.8839 21.8026 12.5076C22.0206 12.0798 22.0206 11.5197 22.0206 10.3996Z" stroke="%231B281E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') no-repeat center;
+  background-size: 24px;
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  display: block;
+}
+
+.wc-comment-actions .reply a {
+  font-size: 0;
+  content: "";
+  background: url('data:image/svg+xml,<svg width="29" height="27" viewBox="0 0 29 27" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.0381 16.7241C25.0381 17.3088 24.7872 17.8694 24.3408 18.2828C23.8943 18.6962 23.2888 18.9285 22.6574 18.9285H8.37321L3.61182 23.3372V5.70239C3.61182 5.11776 3.86264 4.55708 4.30911 4.14369C4.75557 3.73029 5.36111 3.49805 5.99251 3.49805H22.6574C23.2888 3.49805 23.8943 3.73029 24.3408 4.14369C24.7872 4.55708 25.0381 5.11776 25.0381 5.70239V16.7241Z" stroke="%231B281E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') center no-repeat;
+  background-size: 28px;
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.comment-list .children {
+  margin-top: 52px;
+  margin-bottom: 52px;
+  margin-left: 23px;
+}
+
+.comment-list .children li {
+  border-left: 1px solid #496E5333;
+  padding-left: 23px;
+}

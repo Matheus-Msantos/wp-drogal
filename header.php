@@ -24,6 +24,18 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/home.css">
   <?php endif; ?>
 
+  <?php if (is_category()): ?>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/category.css">
+  <?php endif; ?>
+
+  <?php if (is_search()): ?>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/category.css">
+  <?php endif; ?>
+
+  <?php if (is_single()): ?>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/post.css">
+  <?php endif; ?>
+
   <?php wp_head(); ?>
 </head>
 

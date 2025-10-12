@@ -10,42 +10,74 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main class="wc-category-post-lestest">
+  <h2 class="wc-category-post-lestest__title">
+    <?php single_cat_title(''); ?>
+  </h2>
 
-		<?php if ( have_posts() ) : ?>
+  <?php
+  $category = get_queried_object(); // obtém o objeto da categoria atual
+  if (!empty($category->description)):
+    ?>
+    <div class="wc-category-description">
+      <?php echo wpautop($category->description); ?>
+    </div>
+  <?php endif; ?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+  <div class="wc-categoria-search">
+    <?php dynamic_sidebar('busca_categoria'); ?>
+  </div>
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+  <div id="wc-post-list" class="wc-category-post__grid">
+    <?php
+    // Primeira carga (6 posts)
+    $args = array(
+      'post_type' => 'post',
+      'posts_per_page' => 6,
+      'paged' => 1,
+      'cat' => get_queried_object_id(),
+    );
+    $query = new WP_Query($args);
 
-			endwhile;
+    if ($query->have_posts()):
+      while ($query->have_posts()):
+        $query->the_post();
 
-			the_posts_navigation();
+        $thumb = get_the_post_thumbnail_url(get_the_ID(), 'full');
+        $cats = get_the_category();
+        $cat_name = !empty($cats) ? esc_html($cats[0]->name) : '';
+        $date = get_the_date('M, d');
+        $excerpt = wp_trim_words(get_the_excerpt(), 20, '...');
+        ?>
+        <a href="<?php the_permalink(); ?>"
+          class="wc-home-post-lestest__item wc-home-post-lestest__item--small wc-home-post-item">
 
-		else :
+          <div class="wc-home-post-item">
+            <?php if ($thumb): ?>
+              <img src="<?php echo esc_url($thumb); ?>" alt="<?php the_title(); ?>">
+            <?php endif; ?>
+          </div>
 
-			get_template_part( 'template-parts/content', 'none' );
+          <div class="wc-home-post-item__content">
+            <div class="wc-home-post-item__flex">
+              <span class="wc-home-post-item__cat"><?php echo $cat_name; ?></span>
+              <span class="wc-home-post-item__date"><?php echo esc_html($date); ?></span>
+            </div>
+            <h3 class="wc-home-post-item__title-post"><?php the_title(); ?></h3>
+            <p class="wc-home-post-item__excerpt"><?php echo $excerpt; ?></p>
+          </div>
+        </a>
+        <?php
+      endwhile;
+      wp_reset_postdata();
+    endif;
+    ?>
+  </div>
 
-		endif;
-		?>
+  <div class="wc-load-more-container" style="text-align:center; margin-top:30px;">
+    <button id="load-more" class="wc-load-more-btn">Mostrar mais</button>
+  </div>
+</main>
 
-	</main><!-- #main -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>

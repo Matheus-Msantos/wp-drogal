@@ -204,6 +204,22 @@ function _s_widgets_init_search() {
 }
 add_action( 'widgets_init', '_s_widgets_init_search' );
 
+function _s_widgets_init_search_category() {
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Busca Categoria', '_s' ),
+			'id'            => 'busca_categoria',
+			'description'   => esc_html__( 'Add widgets here.', '_s' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	
+}
+add_action( 'widgets_init', '_s_widgets_init_search_category' );
+
 // === REGISTRA O MENU LATERAL E O POST TYPE ===
 function wc_register_carrossel_de_categorias_cpt() {
 
@@ -264,5 +280,72 @@ function wc_save_carrossel_categoria_link($post_id) {
 }
 add_action('save_post', 'wc_save_carrossel_categoria_link');
 
+// Garante que cada comentário tenha um campo 'likes'
+function wc_initialize_comment_likes($comment_id) {
+  add_comment_meta($comment_id, 'likes', 0, true);
+}
+add_action('comment_post', 'wc_initialize_comment_likes');
+
+// AJAX: curtir comentário (limitado por cookie)
+function wc_like_comment() {
+  $comment_id = intval($_POST['comment_id']);
+
+  if (!$comment_id || !get_comment($comment_id)) {
+    wp_send_json_error(['message' => 'Comentário inválido.']);
+  }
+
+  // Cria um hash único do comentário
+  $cookie_key = 'liked_comment_' . $comment_id;
+
+  // Se já curtiu, bloqueia
+  if (isset($_COOKIE[$cookie_key])) {
+    wp_send_json_error(['message' => 'Você já curtiu este comentário.']);
+  }
+
+  // Atualiza o contador de likes
+  $likes = (int) get_comment_meta($comment_id, 'likes', true);
+  $likes++;
+  update_comment_meta($comment_id, 'likes', $likes);
+
+  // Define cookie por 30 dias
+  setcookie($cookie_key, 'true', time() + (30 * DAY_IN_SECONDS), '/');
+
+  wp_send_json_success(['likes' => $likes]);
+}
+add_action('wp_ajax_wc_like_comment', 'wc_like_comment');
+add_action('wp_ajax_nopriv_wc_like_comment', 'wc_like_comment');
 
 
+function wc_initialize_comment_deslikes($comment_id) {
+  add_comment_meta($comment_id, 'deslikes', 0, true);
+}
+add_action('comment_post', 'wc_initialize_comment_deslikes');
+
+// AJAX: curtir comentário (limitado por cookie)
+function wc_deslike_comment() {
+  $comment_id = intval($_POST['comment_id']);
+
+  if (!$comment_id || !get_comment($comment_id)) {
+    wp_send_json_error(['message' => 'Comentário inválido.']);
+  }
+
+  // Cria um hash único do comentário
+  $cookie_key = 'desliked_comment_' . $comment_id;
+
+  // Se já curtiu, bloqueia
+  if (isset($_COOKIE[$cookie_key])) {
+    wp_send_json_error(['message' => 'Você já descurtiu este comentário.']);
+  }
+
+  // Atualiza o contador de deslikes
+  $deslikes = (int) get_comment_meta($comment_id, 'deslikes', true);
+  $deslikes++;
+  update_comment_meta($comment_id, 'deslikes', $deslikes);
+
+  // Define cookie por 30 dias
+  setcookie($cookie_key, 'true', time() + (30 * DAY_IN_SECONDS), '/');
+
+  wp_send_json_success(['deslikes' => $deslikes]);
+}
+add_action('wp_ajax_wc_deslike_comment', 'wc_deslike_comment');
+add_action('wp_ajax_nopriv_wc_deslike_comment', 'wc_deslike_comment');

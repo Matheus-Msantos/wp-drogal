@@ -164,4 +164,95 @@
 
 </body>
 
+<script>
+  let currentPage = 1;
+  const button = document.getElementById("load-more");
+  const postList = document.getElementById("wc-post-list");
+  const categoryID = <?php echo get_queried_object_id(); ?>;
+
+  button.addEventListener("click", function () {
+    currentPage++;
+    button.disabled = true;
+    button.textContent = "Carregando...";
+
+    fetch("<?php echo admin_url('admin-ajax.php'); ?>?action=load_more_posts&page=" + currentPage + "&cat=" + categoryID)
+      .then(res => res.text())
+      .then(data => {
+        if (data.trim() !== "") {
+          postList.insertAdjacentHTML("beforeend", data);
+          button.disabled = false;
+          button.textContent = "Mostrar mais";
+        } else {
+          button.remove();
+        }
+      })
+      .catch(err => {
+        console.error("Erro ao carregar posts:", err);
+        button.disabled = false;
+        button.textContent = "Mostrar mais";
+      });
+  });
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.wc-like-btn')) {
+      e.preventDefault();
+
+      const button = e.target.closest('.wc-like-btn');
+      const container = button.closest('.wc-comment-like');
+      const commentId = container.dataset.commentId;
+
+      fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'action=wc_like_comment&comment_id=' + commentId
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          container.querySelector('.wc-like-count').textContent = data.data.likes;
+          button.classList.add('liked'); // estiliza botão após curtir
+        } else {
+          alert(data.data.message);
+        }
+      });
+    }
+  });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.wc-deslike-btn')) {
+      e.preventDefault();
+
+      const button = e.target.closest('.wc-deslike-btn');
+      const container = button.closest('.wc-comment-deslike');
+      const commentId = container.dataset.commentId;
+
+      fetch('<?php echo admin_url("admin-ajax.php"); ?>', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'action=wc_deslike_comment&comment_id=' + commentId
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          container.querySelector('.wc-deslike-count').textContent = data.data.deslikes;
+          button.classList.add('desliked'); // estiliza botão após curtir
+        } else {
+          alert(data.data.message);
+        }
+      });
+    }
+  });
+});
+</script>
+
+
+
 </html>
+
